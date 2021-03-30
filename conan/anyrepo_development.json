@@ -1,0 +1,6 @@
+{
+    "downstream": "git@github.com:FranzPoize/graphics.git",
+    "dependencies": [
+        ["git@github.com:FranzPoize/math.git", "master"]
+    ]
+}
