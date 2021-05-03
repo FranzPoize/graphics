@@ -10,7 +10,7 @@ class GraphicsConan(ConanFile):
     url = "https://github.com/Adnn/graphics"
     description = "Graphics, software and with OpenGL"
     topics = ("opengl", "graphics", "2D", "3D")
-    settings = "os", "compiler", "build_type", "arch"
+    settings = ("os", "compiler", "build_type", "arch")
     options = {
         "shared": [True, False],
         "build_tests": [True, False],
@@ -18,23 +18,23 @@ class GraphicsConan(ConanFile):
     default_options = {
         "shared": False,
         "build_tests": False,
-        "boost:layout": "versioned", #Should be system on non-Windows
-        "glad:gl_version": "4.1",
+        "boost:layout": "system", #Should be system on non-Windows
+        "glad:api_version": "4.1",
         "glad:extensions": "GL_KHR_debug, GL_ARB_texture_storage",
     }
 
     requires = (
-        ("boost/1.71.0"),
-        ("glad/0.1.33"),
-        ("glfw/3.3.3"),
-        ("jsonformoderncpp/3.7.0"),
+        ("boost/1.75.0"),
+        ("glad/0.1.29@bincrafters/stable"),
+        ("glfw/3.3.2@bincrafters/stable"),
+        ("jsonformoderncpp/3.7.0@vthiery/stable"),
         ("math/local"),
     )
 
     build_requires = ("cmake_installer/[>=3.16]@conan/stable",)
 
     build_policy = "missing"
-    generators = "cmake_paths", "cmake"
+    generators = "cmake_paths", "cmake", "cmake_find_package"
 
     scm = {
         "type": "git",
